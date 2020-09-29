@@ -1,0 +1,87 @@
+<div class="modal fade show" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class=" modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="exampleModalLabel">Add Particulars</h4>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form name="form.particulars" ng-submit="submit()" novalidate>
+                    <div class="form-row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>First name:</label>
+                                <input name="firstName" ng-model="records.selected.firstName" placeholder="First name"
+                                    class="form-control" ng-disabled="isDisabled" minlength="3" required
+                                    ng-class="{'is-invalid': (form.particulars.firstName.$error.required || form.particulars.firstName.$error.minlength) && form.particulars.firstName.$dirty}" />
+                                <p ng-show="form.particulars.firstName.$error.required" class="invalid-feedback">First
+                                    Name is required.</p>
+                                <p ng-show="form.particulars.firstName.$error.minlength" class="invalid-feedback">This
+                                    field min length of 3</p>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label>Last name:</label>
+                                <input name="lastName" ng-model="records.selected.lastName" placeholder="Last name"
+                                    class="form-control" ng-disabled="isDisabled" minlength="3" required
+                                    ng-class="{'is-invalid': (form.particulars.lastName.$error.required || form.particulars.lastName.$error.minlength) && form.particulars.lastName.$dirty}" />
+                                <p ng-show="form.particulars.lastName.$error.required" class="invalid-feedback">First
+                                    Name is required.</p>
+                                <p ng-show="form.particulars.lastName.$error.minlength" class="invalid-feedback">This
+                                    field min length of 3</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Job:</label>
+                                <input name="job" ng-model="records.selected.job" placeholder="Job" class="form-control"
+                                    ng-disabled="isDisabled" minlength="5" required
+                                    ng-class="{'is-invalid': (form.particulars.job.$error.required || form.particulars.job.$error.minlength) && form.particulars.job.$dirty}" />
+                                <p ng-show="form.particulars.job.$error.required" class="invalid-feedback">First
+                                    Name is required.</p>
+                                <p ng-show="form.particulars.job.$error.minlength" class="invalid-feedback">This
+                                    field min length of 5</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label>Gender:</label>
+                                <select class="form-control" ng-disabled="isDisabled" required>
+                                    <option value="" ng-show="false"></option>
+                                    <option ng-selected="records.selected.gender == item.value"
+                                        ng-repeat="item in records.genders" ng-value="item.value">
+                                        {{item.name}}
+                                    </option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="d-flex flex-row-reverse pb-3">
+                        <button class="btn btn-success" type="submit" ng-show="records.state=='add'" ng-disabled="
+                        form.particulars.firstName.$error.required || form.particulars.firstName.$error.minlength||
+                        form.particulars.lastName.$error.required || form.particulars.lastName.$error.minlength || 
+                        form.particulars.job.$error.required || form.particulars.job.$error.minlength
+                        ">
+                            Add Particulars
+                        </button>
+                        <button class="btn btn-warning" type="submit" ng-show="records.state=='edit'" ng-disabled="
+                        form.particulars.firstName.$error.required || form.particulars.firstName.$error.minlength||
+                        form.particulars.lastName.$error.required || form.particulars.lastName.$error.minlength || 
+                        form.particulars.job.$error.required || form.particulars.job.$error.minlength
+                        ">
+                            Edit Particulars
+                        </button>
+                        <button class="btn" ng-show="records.state=='info'">&nbsp;</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
