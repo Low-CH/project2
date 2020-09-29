@@ -1,4 +1,4 @@
-var url = "http://localhost:5000/api/v1/particulars";
+const url = "http://localhost:5000/api/v1/particulars";
 mainApp.controller(
   "particularController",
   ["$scope", "$http", function ($scope, $http) {
@@ -87,23 +87,22 @@ mainApp.controller(
         $http.put(
           `${url}/${id}`,
           { firstName, lastName, job, gender },
-        )
-          .then(
-            function (response) {
-              $scope.records.particulars = response.data.data;
-              swal({
-                title: "Edit Particular",
-                text: "You have edited a particular successfully!",
-                icon: "success",
-              });
-            },
-          ).catch((error) => {
+        ).then(
+          function (response) {
+            $scope.records.particulars = response.data.data;
             swal({
               title: "Edit Particular",
-              text: error.data.msg,
-              icon: "error",
+              text: "You have edited a particular successfully!",
+              icon: "success",
             });
+          },
+        ).catch((error) => {
+          swal({
+            title: "Edit Particular",
+            text: error.data.msg,
+            icon: "error",
           });
+        });
       }
       $("#exampleModal").modal("hide");
     };
